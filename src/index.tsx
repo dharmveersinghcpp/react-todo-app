@@ -1,15 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
-import App from "./App";
-import ToDo from "./components/toDo";
-// Redux
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
-
-// Redux Store
 import { store, persistor } from "./store/configureStore";
+import ToDo from "./components/ToDo";
+import Layout from "./components/Layout";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Privacy from "./components/Privacy";
+import TermsAndConditions from "./components/TermsAndConditions";
 
 // const store = storeWithPersistReducer();
 
@@ -20,8 +21,21 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <ToDo />
-        {/* <App /> */}
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<ToDo />} />
+              <Route path="about" element={<About />} />
+              <Route path="contact" element={<Contact />} />
+              <Route path="privacy" element={<Privacy />} />
+              <Route
+                path="termsandcondition"
+                element={<TermsAndConditions />}
+              />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+        {/* <ToDo /> */}
       </PersistGate>
     </Provider>
   </React.StrictMode>

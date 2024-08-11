@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as toDoAction from "../actions/toDoAction";
 
-class App extends Component {
+class ToDo extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -31,7 +31,6 @@ class App extends Component {
 
   // View ToDo List
   listView(data, index) {
-    console.log("index = ", index);
     return (
       <div className="row">
         <div className="col-md-10">
@@ -100,4 +99,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(ToDo);
